@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
+    [Header("Room Settings")]
     public Room up;
     public Room down;
     public Room left;
-    public Room right;
-
+    public Room right;   
+    public Transform upDoor, downDoor, leftDoor, rightDoor,spawnPoint;
     public Vector3 position => transform.position;
 
     [Header("Detection Settings")]
     public float detectDistance = 15f; // ระยะห่างระหว่างห้อง (ต้องตรงกับ spacing ที่คุณใช้ spawn)
+
+    [Header("Camera Transform")]
+    public Transform cam1;
+    public Transform cam2;
+    public Transform cam3;
 
     // ไม่ต้องเรียกใน Start แล้ว
     // void Start() { AutoLinkNeighbors(); }

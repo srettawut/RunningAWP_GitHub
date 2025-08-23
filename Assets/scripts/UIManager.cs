@@ -1,26 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 public class UIManager : MonoBehaviour
 {
-    public TMP_Text currentRoomText;
-    public GameObject player;
-    private PlayerController playerController;
+    [Header("CHANGE CAM BUTTON")]
+    public GameObject camButton1;
+    public GameObject camButton2;
+    public GameObject camButton3;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public void OpenButton1()
     {
-        playerController = player.GetComponent<PlayerController>();
+        camButton1.SetActive(true);
+        camButton2.SetActive(false);
+        camButton3.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenButton2()
     {
-        if (playerController != null && playerController.currentRoom != null)
-        {
-            // แสดงชื่อห้องใน TextMeshPro
-            currentRoomText.text = playerController.currentRoom.name;
-        }
+        camButton1.SetActive(false);
+        camButton2.SetActive(true);
+        camButton3.SetActive(false);
+    }
+
+    public void OpenButton3()
+    {
+        camButton1.SetActive(false);
+        camButton2.SetActive(false);
+        camButton3.SetActive(true);
     }
 }
