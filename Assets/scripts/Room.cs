@@ -13,7 +13,7 @@ public class Room : MonoBehaviour
     public Vector3 position => transform.position;
 
     [Header("Detection Settings")]
-    public float detectDistance = 15f; // ระยะห่างระหว่างห้อง (ต้องตรงกับ spacing ที่คุณใช้ spawn)
+    public float detectDistance = 10f; // ระยะห่างระหว่างห้อง (ต้องตรงกับ spacing ที่คุณใช้ spawn)
 
     [Header("Camera Transform")]
     public Transform cam1;

@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public Room currentRoom;
     public Camera cam;
     public UIManager uiManager;
+    public StatusManager statusManager;
     public bool canWalk;
 
     void Update()
@@ -32,12 +33,14 @@ public class PlayerController : MonoBehaviour
         }        
     }
 
-    void MoveToRoom(Room nextRoom)
+    IEnumerator MoveToRoom(Room nextRoom)
     {
         if (nextRoom != null)
-        {       
+        {
+            uiManager.FadeOutIn();
             currentRoom = nextRoom;
             transform.position = currentRoom.spawnPoint.position;
+            yield return new WaitForSeconds(0.3f);
             MoveCamera moveCam = cam.GetComponent<MoveCamera>();
             if (moveCam != null)
             {
@@ -45,6 +48,8 @@ public class PlayerController : MonoBehaviour
                 moveCam.MoveToCam1();
                 uiManager.OpenButton2();
             }
+            //Update status
+            statusManager.DecreaseHunger(statusManager.hungerDecreasePerRoom);
         }
         else
         {
@@ -63,7 +68,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         canWalk = true;
-        MoveToRoom(direction);
+        StartCoroutine(MoveToRoom(direction));
     }
 
     IEnumerator WalkBack(Vector3 target)

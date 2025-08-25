@@ -10,9 +10,9 @@ public class DungeonGenerator : MonoBehaviour
     public int rows = 3;               // จำนวนแถว (Z)
     public int cols = 10;              // จำนวนห้องต่อแถว (X)
     public float roomSpacingX = 15f;   // ระยะห่างแนวนอน (X)
-    public float roomSpacingZ = 12f;   // ระยะห่างแนวลึก (Z)
+    public float roomSpacingZ = 15f;   // ระยะห่างแนวลึก (Z)
 
-    public float detectDistance=15f;
+    //public float detectDistance=15f;
 
     [Header("Spawn Settings")]
     public Transform startPoint;       // จุดเริ่มสร้างห้อง (มุมซ้ายบน)
